@@ -1,0 +1,363 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bobby Lyte — Book a DJ set</title>
+<meta name="description" content="Bobby Lyte — DJ and producer based in Sevilla. Day sets that open a room, night sets that hold it, and a live set of all original music. Booking worldwide.">
+<meta property="og:title" content="Bobby Lyte — Book a DJ set">
+<meta property="og:description" content="Day sets that open a room, night sets that hold it, and a live set of all original music.">
+<meta property="og:image" content="assets/logo-bobby-lyte-horizontal.svg">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/mark-signal-ball-square.svg">
+<link rel="stylesheet" href="styles.css">
+<style>
+html{scroll-behavior:smooth}body{margin:0;overflow-x:hidden}
+.wrap{max-width:var(--container-max);margin:0 auto;padding-left:var(--container-pad);padding-right:var(--container-pad)}
+/* nav */
+.nav{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:var(--space-5);padding:var(--space-4);padding-left:var(--container-pad);padding-right:var(--container-pad);background:transparent;border-bottom:1px solid transparent;transition:background var(--dur-base) var(--ease-standard),border-color var(--dur-base) var(--ease-standard)}
+.nav.solid{background:rgba(6,7,10,.82);backdrop-filter:blur(14px);border-bottom-color:var(--border-hairline)}
+.nav-links{display:flex;align-items:center;gap:var(--space-6)}
+.nav-links ul{display:flex;gap:var(--space-5);list-style:none;margin:0;padding:0}
+.nav a.lnk{font-family:var(--font-mono);font-size:var(--mono-label-size);letter-spacing:var(--mono-label-ls);text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid transparent;padding-bottom:2px;text-decoration:none}
+.nav a.lnk[aria-current="true"]{color:var(--accent-primary);border-bottom-color:var(--accent-primary);text-shadow:var(--glow-text)}
+/* buttons */
+.btn{font-family:var(--font-mono);font-weight:500;text-transform:uppercase;letter-spacing:var(--mono-label-ls);display:inline-flex;align-items:center;gap:var(--space-2);border:1px solid transparent;border-radius:var(--radius-sm);cursor:pointer;text-decoration:none;font-size:12px;padding:12px 20px;transition:background var(--dur-fast) var(--ease-standard),color var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard),box-shadow var(--dur-base) var(--ease-standard),transform var(--dur-fast) var(--ease-standard)}
+.btn-lg{font-size:13px;padding:16px 28px}.btn-sm{font-size:11px;padding:8px 14px}
+.btn-signal{background:var(--accent-primary);color:var(--text-on-signal);border-color:var(--accent-primary)}
+.btn-signal:hover{background:var(--accent-active);border-color:var(--accent-active);box-shadow:var(--glow-signal)}
+.btn-ghost{background:transparent;color:var(--accent-primary);border-color:var(--border-strong)}
+.btn-ghost:hover{border-color:var(--accent-primary);color:var(--accent-active);box-shadow:var(--glow-signal-soft)}
+.btn:active{transform:translateY(1px);box-shadow:none}
+.btn[disabled]{opacity:.4;cursor:not-allowed;box-shadow:none}
+.cursor{animation:lyte-blink var(--blink) steps(1,end) infinite;font-weight:400}
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border-hairline)}
+.hero .layer{position:absolute;inset:0;pointer-events:none}
+.hero .grid{background-image:var(--texture-grid);background-size:var(--grid-size) var(--grid-size);opacity:.5}
+.hero .vig{background:var(--vignette)}
+.hero-in{position:relative;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(260px,.65fr);gap:var(--space-8);align-items:center;padding-top:var(--space-10);padding-bottom:var(--space-9)}
+.hero h1{font-family:var(--font-display);font-weight:700;font-size:var(--display-xxl-size);line-height:var(--display-xxl-lh);letter-spacing:var(--display-xxl-ls);color:var(--text-strong);margin:0}
+.lamp{width:8px;height:8px;border-radius:50%;background:var(--accent-primary);box-shadow:var(--glow-signal);animation:lyte-breathe var(--dur-breathe) var(--ease-standard) infinite}
+.eyebrow{display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-5)}
+.lead{margin:var(--space-5) 0 0;font-size:17px;line-height:1.6;color:var(--text-body);max-width:38ch}
+.hero-side{display:flex;flex-direction:column;gap:var(--space-5);align-items:flex-end}
+.hero-side img{width:190px;height:auto;animation:lyte-breathe var(--dur-breathe) var(--ease-standard) infinite}
+/* chips */
+.chips{display:flex;flex-wrap:wrap;gap:var(--space-2)}
+.chip{display:inline-flex;align-items:center;gap:var(--space-2);font-family:var(--font-mono);font-size:var(--mono-label-size);letter-spacing:var(--mono-label-ls);text-transform:uppercase;padding:5px 10px;border-radius:var(--radius-pill);border:1px solid var(--border-hairline);color:var(--text-muted);white-space:nowrap}
+.chip-signal{color:var(--accent-primary);border-color:var(--border-strong);background:var(--signal-a12)}
+.chip-amber{color:var(--accent-warm);border-color:rgba(255,176,32,.32);background:rgba(255,176,32,.10)}
+.chip .dot{width:6px;height:6px;border-radius:50%;background:currentColor;box-shadow:0 0 8px currentColor}
+/* level bars */
+.levels{display:flex;align-items:flex-end;gap:3px;height:46px;width:100%}
+.levels span{flex:1;background:var(--accent-primary);opacity:.7;animation:lyte-eq 1.1s var(--ease-standard) infinite alternate}
+@keyframes lyte-eq{from{height:22%}to{height:100%}}
+/* ticker */
+.ticker{overflow:hidden;border-top:1px solid var(--border-hairline);border-bottom:1px solid var(--border-hairline);padding:var(--space-3) 0;background:var(--surface-panel)}
+.ticker .track{display:flex;width:max-content;font-family:var(--font-mono);font-size:var(--mono-label-size);letter-spacing:var(--mono-label-ls);text-transform:uppercase;color:var(--text-muted);animation:lyte-marquee 40s linear infinite}
+.ticker .track>div{display:flex;gap:var(--space-5);padding-right:var(--space-5);flex-shrink:0}
+.ticker .sl{color:var(--border-strong)}
+/* sections */
+section{padding:var(--section-y) 0}
+.sechead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:var(--space-5);margin-bottom:var(--space-6)}
+.sechead h2{font-family:var(--font-display);font-weight:700;font-size:var(--display-l-size);line-height:var(--display-l-lh);letter-spacing:var(--display-l-ls);color:var(--text-strong);margin:0}
+.sechead .eb{font-family:var(--font-mono);font-size:var(--mono-label-size);letter-spacing:var(--mono-label-ls);text-transform:uppercase;color:var(--accent-primary);margin-bottom:var(--space-3);display:block}
+.sechead .meta{font-family:var(--font-mono);font-size:var(--mono-caption-size);color:var(--text-muted)}
+.sechead::after{content:"";flex-basis:100%;height:1px;background:var(--border-hairline);margin-top:var(--space-4)}
+/* panels */
+.panel{background:var(--surface-card);border:1px solid var(--border-hairline);border-radius:var(--radius-md);padding:var(--space-5);box-shadow:var(--shadow-panel)}
+.panel-dark{background:var(--surface-panel)}
+.panel .lbl,.lbl{font-family:var(--font-mono);font-size:var(--mono-label-size);letter-spacing:var(--mono-label-ls);text-transform:uppercase;color:var(--text-muted)}
+.panel .lbl-signal{color:var(--accent-primary)}
+/* tabs + sets */
+.tabs{display:flex;gap:var(--space-2);margin-bottom:var(--space-6);flex-wrap:wrap}
+.tab{font-family:var(--font-mono);font-size:12px;letter-spacing:var(--mono-label-ls);text-transform:uppercase;padding:12px 20px;cursor:pointer;border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);border:1px solid var(--border-hairline);transition:all var(--dur-fast) var(--ease-standard)}
+.tab[aria-selected="true"]{background:var(--signal-a12);color:var(--accent-primary);border-color:var(--accent-primary);box-shadow:var(--glow-signal-soft)}
+.setgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-4)}
+.embed{background:var(--surface-card);border:1px solid var(--border-hairline);border-radius:var(--radius-md);padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-3);box-shadow:var(--shadow-panel)}
+.embed h4{margin:0;font-family:var(--font-display);font-weight:500;font-size:16px;letter-spacing:-.01em;color:var(--text-strong)}
+.embed .well{background:var(--surface-inset);box-shadow:var(--inset-screen);border-radius:var(--radius-sm);overflow:hidden}
+.embed iframe{display:block;border:0;width:100%}
+.setpanes>[hidden]{display:none}
+/* shows */
+.showrow{display:grid;grid-template-columns:12px 148px minmax(0,1fr) minmax(0,1.2fr) auto;gap:var(--space-5);align-items:center;padding:var(--space-4);border-bottom:1px solid var(--border-hairline);transition:background var(--dur-fast) var(--ease-standard)}
+.showrow:last-child{border-bottom:none}
+.showrow:hover{background:var(--signal-a12)}
+.showrow .st{width:8px;height:8px;border-radius:50%}
+.st-on{background:var(--status-on);box-shadow:0 0 10px var(--status-on)}
+.st-standby{background:var(--status-standby);box-shadow:0 0 10px var(--status-standby)}
+.st-off{background:var(--status-off)}
+.showrow .date{font-family:var(--font-readout);font-size:20px;letter-spacing:var(--readout-ls);color:var(--accent-primary);white-space:nowrap}
+.showrow .city{font-family:var(--font-display);font-weight:500;font-size:17px;color:var(--text-strong);letter-spacing:-.01em}
+.showrow .venue{font-family:var(--font-mono);font-size:var(--mono-caption-size);color:var(--text-muted)}
+.showrow .act{font-family:var(--font-mono);font-size:var(--mono-label-size);letter-spacing:var(--mono-label-ls);text-transform:uppercase;color:var(--accent-primary);white-space:nowrap}
+/* about */
+.two{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(260px,.7fr);gap:var(--space-7);align-items:start}
+.statrow{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--border-hairline);padding-bottom:var(--space-2)}
+.statval{font-family:var(--font-readout);font-size:18px;color:var(--accent-primary)}
+.photoslot{display:grid;place-items:center;min-height:200px;gap:var(--space-3);text-align:center;background:var(--surface-inset);box-shadow:var(--inset-screen);border-radius:var(--radius-sm);padding:var(--space-4)}
+/* press */
+.presscards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:var(--space-4)}
+/* form */
+.form{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)}
+.field{display:flex;flex-direction:column;gap:var(--space-2)}
+.field.full{grid-column:1 / -1}
+.field label{font-family:var(--font-mono);font-size:var(--mono-label-size);letter-spacing:var(--mono-label-ls);text-transform:uppercase;color:var(--text-muted)}
+.field input,.field select,.field textarea{width:100%;box-sizing:border-box;background:var(--surface-inset);color:var(--text-strong);font-family:var(--font-mono);font-size:14px;line-height:1.5;border:1px solid var(--border-hairline);border-radius:var(--radius-sm);padding:12px 14px;outline:none;transition:border-color var(--dur-fast) var(--ease-standard),box-shadow var(--dur-base) var(--ease-standard)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent-primary);box-shadow:0 0 0 3px var(--signal-a24)}
+.field input:focus~label{color:var(--accent-primary)}
+.field .hint{font-family:var(--font-mono);font-size:var(--mono-caption-size);color:var(--text-muted)}
+.riderrow{display:grid;grid-template-columns:140px minmax(0,1fr);gap:var(--space-4);border-bottom:1px solid var(--border-hairline);padding-bottom:var(--space-3)}
+.riderrow span:last-child{font-size:13px;color:var(--text-body)}
+.glowpanel{box-shadow:var(--glow-signal-soft),var(--shadow-panel)}
+/* footer */
+footer{border-top:1px solid var(--border-hairline);background:var(--surface-panel);padding:var(--space-8) 0 var(--space-6);padding-left:var(--container-pad);padding-right:var(--container-pad);display:grid;gap:var(--space-6)}
+.footrow{display:flex;flex-wrap:wrap;gap:var(--space-6);justify-content:space-between;align-items:flex-end}
+.footrow ul{display:flex;gap:var(--space-5);list-style:none;margin:0;padding:0}
+footer a{font-family:var(--font-mono);font-size:var(--mono-label-size);letter-spacing:var(--mono-label-ls);text-transform:uppercase;color:var(--text-muted);text-decoration:none;border-bottom:none}
+footer a:hover{color:var(--accent-primary)}
+.footmeta{display:flex;flex-wrap:wrap;gap:var(--space-5);justify-content:space-between;font-family:var(--font-mono);font-size:var(--mono-caption-size);color:var(--text-muted)}
+.quote{font-family:var(--font-editorial);font-style:italic;font-weight:300;font-size:var(--editorial-quote-size);line-height:var(--editorial-quote-lh);color:var(--text-strong)}
+.sent{display:grid;gap:var(--space-4);justify-items:start}
+/* responsive */
+@media (max-width:900px){.hero-in,.two{grid-template-columns:1fr}.hero-side{align-items:flex-start}.form{grid-template-columns:1fr}.showrow{grid-template-columns:12px 110px 1fr;row-gap:var(--space-2)}.showrow .venue,.showrow .act{grid-column:2 / -1}.nav-links ul{display:none}}
+</style></head><body>
+
+<nav class="nav" id="nav">
+<a href="#top"><img src="assets/mark-signal-ball-square.svg" alt="Bobby Lyte" height="30"></a>
+<div class="nav-links">
+<ul>
+<li><a class="lnk" href="#sets">Sets</a></li>
+<li><a class="lnk" href="#shows">Shows</a></li>
+<li><a class="lnk" href="#signal">Signal</a></li>
+<li><a class="lnk" href="#press">Press</a></li>
+<li><a class="lnk" href="#booking">Booking</a></li>
+</ul>
+<a class="btn btn-ghost btn-sm" href="#booking">Book</a>
+</div>
+</nav>
+
+<header class="hero" id="top">
+<div class="layer grid"></div><div class="layer vig"></div>
+<div class="wrap hero-in">
+<div>
+<div class="eyebrow"><span class="lamp"></span><span class="lbl" style="color:var(--accent-primary)">// available 2026 — europe, us, canada</span></div>
+<h1>BOBBY<br>LYTE</h1>
+<p class="lead">Day sets that open a room, night sets that hold it, and a live set of all original music.</p>
+<div class="chips" style="margin:var(--space-6) 0">
+<span class="chip chip-signal"><span class="dot"></span>Sevilla, ES</span>
+<span class="chip">@bobbyflowstate</span>
+<span class="chip">60 – 180 min</span>
+<span class="chip">Day // Night // Live</span>
+</div>
+<div style="display:flex;gap:var(--space-4);flex-wrap:wrap;align-items:center">
+<a class="btn btn-signal btn-lg" href="#booking">Book →<span class="cursor">▮</span></a>
+<a class="btn btn-ghost btn-lg" href="#sets">Hear a set</a>
+</div>
+</div>
+<div class="hero-side">
+<img src="assets/mark-signal-ball-square.svg" alt="">
+<div style="width:100%;display:flex;flex-direction:column;gap:var(--space-3)">
+<div class="levels" id="levels"></div>
+<div style="display:flex;justify-content:space-between"><span class="lbl">live signal</span><span class="lbl" style="color:var(--accent-primary)">on</span></div>
+</div>
+</div>
+</div>
+</header>
+
+<div class="ticker"><div class="track" id="track"></div></div>
+
+<section id="sets"><div class="wrap">
+<div class="sechead"><div><span class="eb">// what i play</span><h2>Three sets. Pick the room.</h2></div><span class="meta">DAY // NIGHT // LIVE</span></div>
+<div class="tabs" role="tablist">
+<button class="tab" role="tab" aria-selected="true" data-pane="night">Night sets</button>
+<button class="tab" role="tab" aria-selected="false" data-pane="day">Day sets</button>
+<button class="tab" role="tab" aria-selected="false" data-pane="live">Live set</button>
+</div>
+<div class="setpanes">
+<div data-pane="night">
+<p style="color:var(--text-body);margin:0 0 var(--space-5)">Driving, momentum-building — for peak-time and after-dark rooms.</p>
+<div class="setgrid">
+<article class="embed"><h4>Techno, Indie Dance — Sevilla</h4><span class="lbl">night set</span><div class="chips"><span class="chip">Techno</span><span class="chip">Indie Dance</span></div><div class="well"><iframe height="200" loading="lazy" src="https://www.youtube-nocookie.com/embed/j__KGVRYHHY" title="Techno, Indie Dance — Sevilla" allow="encrypted-media;picture-in-picture"></iframe></div></article>
+<article class="embed"><h4>Afro house — Burning Man</h4><span class="lbl">DeMentha // Axolotl 2025</span><div class="chips"><span class="chip">Afro House</span><span class="chip">Tech House</span></div><div class="well"><iframe height="140" loading="lazy" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fbobbyflowstate%2Ftech-house-afro-house-inspired-by-wednesday-dementha-takeover-axolotl-burning-man-2025&color=%2335FF9E&inverse=true&auto_play=false&show_user=true" title="Afro house — Burning Man"></iframe></div></article>
+<article class="embed"><h4>Afro house &amp; techno — Seville</h4><span class="lbl">Noche de Setas 7 // Glitteratti</span><div class="chips"><span class="chip">Afro House</span><span class="chip">Techno</span></div><div class="well"><iframe height="140" loading="lazy" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fbobbyflowstate%2Findie-dance-afro-house-techno-noche-de-setas-7-by-glitteratti-sevilla-spain&color=%2335FF9E&inverse=true&auto_play=false&show_user=true" title="Afro house and techno — Seville"></iframe></div></article>
+</div>
+</div>
+<div data-pane="day" hidden>
+<p style="color:var(--text-body);margin:0 0 var(--space-5)">Groove-forward, melodic, room-opening — for daytime, sunset, and warm-up slots.</p>
+<div class="setgrid">
+<article class="embed"><h4>Indie dance, funk &amp; tech house — Burning Man</h4><span class="lbl">DeMentha // Thu 1PM opening 2024</span><div class="chips"><span class="chip">Indie Dance</span><span class="chip">Nu Disco</span></div><div class="well"><iframe height="140" loading="lazy" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fbobbyflowstate%2Findie-dance-nu-disco-deep-house-thursday-1-pm-opening-set-at-dementha-burning-man-2024&color=%2335FF9E&inverse=true&auto_play=false&show_user=true" title="Indie dance, funk and tech house — Burning Man"></iframe></div></article>
+<article class="embed"><h4>Tech house, deep house — Burning Man</h4><span class="lbl">DeMentha // Tuesday 2019</span><div class="chips"><span class="chip">Tech House</span><span class="chip">Deep House</span></div><div class="well"><iframe height="140" loading="lazy" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fbobbyflowstate%2Fdementha-2019-tues&color=%2335FF9E&inverse=true&auto_play=false&show_user=true" title="Tech house, deep house — Burning Man"></iframe></div></article>
+<article class="embed"><h4>Indie dance, tech house — San Francisco</h4><span class="lbl">DeMentha presents Mint Manifesto</span><div class="chips"><span class="chip">Indie Dance</span><span class="chip">Tech House</span></div><div class="well"><iframe height="140" loading="lazy" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fbobbyflowstate%2Fbobby-lyte-dementha-presents-mint-manifesto&color=%2335FF9E&inverse=true&auto_play=false&show_user=true" title="Indie dance, tech house — San Francisco"></iframe></div></article>
+</div>
+</div>
+<div data-pane="live" hidden>
+<p style="color:var(--text-body);margin:0 0 var(--space-5)">A performance of entirely original music — night and deep-listening rooms.</p>
+<div class="setgrid" style="grid-template-columns:minmax(0,1fr)">
+<article class="embed"><h4>A Melody Has Written It</h4><span class="lbl">all original production</span><div class="chips"><span class="chip">Melodic House</span><span class="chip">Psychedelic</span></div><div class="well"><iframe height="140" loading="lazy" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fbobbyflowstate%2Fa-melody-has-written-it&color=%2335FF9E&inverse=true&auto_play=false&show_user=true" title="A Melody Has Written It"></iframe></div></article>
+</div>
+</div>
+</div>
+</div></section>
+
+<section id="shows" style="padding-top:0"><div class="wrap">
+<div class="sechead"><div><span class="eb">// rooms i've been in</span><h2>Dates and scenes.</h2></div><span class="meta">BURNING MAN // SEVILLA // SAN FRANCISCO</span></div>
+<div class="panel panel-dark" style="padding:0">
+<div class="showrow"><span class="st st-on"></span><span class="date">08.29.26</span><span class="city">Black Rock City</span><span class="venue">DeMentha // Burning Man</span><span class="act">Booked</span></div>
+<div class="showrow"><span class="st st-standby"></span><span class="date">09.12.26</span><span class="city">Sevilla</span><span class="venue">Glitteratti // Noche de Setas</span><span class="act">Holding</span></div>
+<div class="showrow"><span class="st st-off"></span><span class="date">08.28.25</span><span class="city">Black Rock City</span><span class="venue">DeMentha takeover // Axolotl</span><span></span></div>
+<div class="showrow"><span class="st st-off"></span><span class="date">07.05.25</span><span class="city">Sevilla</span><span class="venue">Noche de Setas 7</span><span></span></div>
+<div class="showrow"><span class="st st-off"></span><span class="date">08.29.24</span><span class="city">Black Rock City</span><span class="venue">DeMentha // Thursday opening</span><span></span></div>
+<div class="showrow"><span class="st st-off"></span><span class="date">04.20.24</span><span class="city">San Francisco</span><span class="venue">DeMentha presents Mint Manifesto</span><span></span></div>
+</div>
+<p class="lbl" style="margin-top:var(--space-5)">DeMentha resident · Glitteratti · booked again for Burning Man 2026</p>
+</div></section>
+
+<section id="signal" style="padding-top:0"><div class="wrap">
+<div class="sechead"><div><span class="eb">// signal</span><h2>Who's behind the decks.</h2></div></div>
+<div class="two">
+<div>
+<p style="font-size:16px;line-height:1.7;color:var(--text-body)">Bobby Lyte is a DJ and producer who came up through the San Francisco and Burning Man scenes and is now based in Sevilla, Spain. His day sets are bright, dancey, and full of energy — built to get people moving. His night sets stay energetic but go deeper and more euphoric. He also performs a live set of entirely original production.</p>
+<p style="font-size:16px;line-height:1.7;color:var(--text-body)">A regular at DeMentha / Burning Man and across the Seville underground, he's the founder of Flow State Radio and the first DJ of SOL3CTA.</p>
+<p class="quote" style="margin-top:var(--space-6)">The low-end finds you before the lights do.</p>
+</div>
+<div style="display:grid;gap:var(--space-4)">
+<div class="panel panel-dark"><span class="lbl lbl-signal">// press photo</span><div class="photoslot" style="margin-top:var(--space-4)"><img src="assets/mark-signal-ball-line.svg" height="64" alt="" style="color:var(--border-strong)"><span class="lbl">hi-res press photo — awaiting supply</span></div></div>
+<div class="panel"><span class="lbl lbl-signal">// stats</span><div style="display:grid;gap:var(--space-4);margin-top:var(--space-4)">
+<div class="statrow"><span class="lbl">instagram</span><span><span class="statval">1K+</span> <span class="lbl">followers</span></span></div>
+<div class="statrow"><span class="lbl">youtube</span><span><span class="statval">2K+</span> <span class="lbl">subscribers</span></span></div>
+<div class="statrow"><span class="lbl">soundcloud</span><span><span class="statval" style="color:var(--text-muted)">—</span> <span class="lbl">stats pending</span></span></div>
+</div></div>
+</div>
+</div>
+</div></section>
+
+<section id="press" style="padding-top:0"><div class="wrap">
+<div class="sechead"><div><span class="eb">// press</span><h2>Everything an agent needs.</h2></div><span class="meta">EPK // LOGOS // PHOTOS</span></div>
+<div class="presscards">
+<div class="panel"><span class="lbl lbl-signal">// epk</span><h4 style="font-family:var(--font-display);font-weight:500;font-size:16px;color:var(--text-strong);margin:var(--space-3) 0 var(--space-2)">One-page EPK</h4><span class="lbl">Bio, sets, dates, contact — PDF</span><div style="margin-top:var(--space-4)"><button class="btn btn-ghost btn-sm" disabled>Pending</button></div></div>
+<div class="panel"><span class="lbl lbl-signal">// marks</span><h4 style="font-family:var(--font-display);font-weight:500;font-size:16px;color:var(--text-strong);margin:var(--space-3) 0 var(--space-2)">Logo pack</h4><span class="lbl">Wordmark, mark, endorsement lock — SVG</span><div style="margin-top:var(--space-4)"><a class="btn btn-ghost btn-sm" href="assets/logo-bobby-lyte-horizontal.svg" download>Download</a></div></div>
+<div class="panel"><span class="lbl lbl-signal">// photos</span><h4 style="font-family:var(--font-display);font-weight:500;font-size:16px;color:var(--text-strong);margin:var(--space-3) 0 var(--space-2)">Press photos</h4><span class="lbl">Hi-res, awaiting supply</span><div style="margin-top:var(--space-4)"><button class="btn btn-ghost btn-sm" disabled>Pending</button></div></div>
+<div class="panel"><span class="lbl lbl-signal">// video</span><h4 style="font-family:var(--font-display);font-weight:500;font-size:16px;color:var(--text-strong);margin:var(--space-3) 0 var(--space-2)">Live clips</h4><span class="lbl">YouTube — night set, Sevilla</span><div style="margin-top:var(--space-4)"><a class="btn btn-ghost btn-sm" href="https://www.youtube.com/watch?v=j__KGVRYHHY">Watch</a></div></div>
+</div>
+</div></section>
+
+<section id="booking" style="padding-top:0"><div class="wrap">
+<div class="sechead"><div><span class="eb">// booking</span><h2>Tell me about the room.</h2><p style="color:var(--text-muted);margin:var(--space-3) 0 0">Direct to Bobby — no agent in between.</p></div><span class="meta">booking@bobbyflowstate.com</span></div>
+<div class="two">
+<div class="panel glowpanel" style="padding:var(--space-6)">
+<form class="form" id="bookform" method="post" action="/api/booking" novalidate>
+<div class="field"><label for="f-name">Name <span style="color:var(--accent-primary)">*</span></label><input id="f-name" name="name" placeholder="Who's asking" required></div>
+<div class="field"><label for="f-org">Organisation / event</label><input id="f-org" name="organisation" placeholder="Promoter, festival, venue"></div>
+<div class="field"><label for="f-email">Email <span style="color:var(--accent-primary)">*</span></label><input id="f-email" type="email" name="email" placeholder="you@venue.com" required></div>
+<div class="field"><label for="f-date">Date</label><input id="f-date" name="date" placeholder="dd.mm.yy"></div>
+<div class="field"><label for="f-city">City / venue</label><input id="f-city" name="city" placeholder="Sevilla — Sala X"></div>
+<div class="field"><label for="f-set">Set type</label><select id="f-set" name="settype"><option>Night set</option><option>Day set</option><option>Live set (original)</option><option>Not sure yet</option></select></div>
+<div class="field full"><label for="f-budget">Budget</label><input id="f-budget" name="budget" placeholder="Range is fine"><span class="hint">Fee on request — a range keeps it quick.</span></div>
+<div class="field full"><label for="f-msg">Message</label><textarea id="f-msg" name="message" rows="4" placeholder="What's the room, the capacity, and what should it feel like?"></textarea></div>
+<div class="field full" style="flex-direction:row;align-items:center;gap:var(--space-4);flex-wrap:wrap">
+<button class="btn btn-signal btn-lg" type="submit">Send enquiry<span class="cursor">▮</span></button>
+<span class="lbl">or mail <a href="mailto:booking@bobbyflowstate.com">booking@bobbyflowstate.com</a></span>
+</div>
+</form>
+<div class="sent" id="sentmsg" hidden>
+<span class="lbl lbl-signal">// received</span>
+<p style="font-family:var(--font-display);font-weight:500;font-size:24px;color:var(--text-strong);margin:0;letter-spacing:-.01em">Signal received. I'll come back to you within two days.</p>
+</div>
+</div>
+<div style="display:grid;gap:var(--space-4)">
+<div class="panel panel-dark"><div style="display:flex;justify-content:space-between"><span class="lbl lbl-signal">// technical</span><span class="lbl">rider</span></div>
+<div style="display:grid;gap:var(--space-3);margin-top:var(--space-4)">
+<div class="riderrow"><span class="lbl">set types</span><span>Day · Night · Live (original)</span></div>
+<div class="riderrow"><span class="lbl">set length</span><span>60 – 180 min</span></div>
+<div class="riderrow"><span class="lbl">preferred setup</span><span>2× CDJ-2000 (or newer) + Pioneer mixer, or Allen &amp; Heath Xone:96</span></div>
+<div class="riderrow"><span class="lbl">travelling from</span><span>Sevilla, Spain</span></div>
+<div class="riderrow"><span class="lbl">radius</span><span>Europe, USA, Canada</span></div>
+<div class="riderrow" style="border-bottom:none"><span class="lbl">fee</span><span>On request</span></div>
+</div></div>
+<div class="panel"><span class="lbl lbl-signal">// availability</span><div class="chips" style="margin-top:var(--space-4)">
+<span class="chip chip-signal"><span class="dot"></span>Europe</span><span class="chip chip-signal"><span class="dot"></span>USA</span><span class="chip chip-signal"><span class="dot"></span>Canada</span><span class="chip chip-amber"><span class="dot"></span>Burning Man 2026 — held</span>
+</div></div>
+</div>
+</div>
+</div></section>
+
+<footer>
+<div class="footrow">
+<img src="assets/lockup-sol3cta-lyte.svg" alt="// SOL3CTA" height="26">
+<ul>
+<li><a href="https://instagram.com/bobbyflowstate">Instagram</a></li>
+<li><a href="https://soundcloud.com/bobbyflowstate">SoundCloud</a></li>
+<li><a href="https://youtube.com/@bobbyflowstate">YouTube</a></li>
+</ul>
+</div>
+<div class="footmeta"><a href="mailto:booking@bobbyflowstate.com">booking@bobbyflowstate.com</a><span>Bobby Lyte // SOL3CTA · © <span id="year"></span></span></div>
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* level bars */
+(function(){
+  var host = document.getElementById("levels");
+  for (var i = 0; i < 24; i++) {
+    var b = document.createElement("span");
+    b.style.animationDelay = (i * 0.06).toFixed(2) + "s";
+    b.style.animationDuration = (0.8 + (i % 5) * 0.14).toFixed(2) + "s";
+    host.appendChild(b);
+  }
+})();
+
+/* ticker */
+(function(){
+  var cities = ["Sevilla","Black Rock City","San Francisco","Berlin","Lisboa","Barcelona"];
+  var strip = document.createElement("div");
+  cities.forEach(function(c){
+    strip.insertAdjacentHTML("beforeend", "<span>" + c + "</span><span class='sl'>//</span>");
+  });
+  var track = document.getElementById("track");
+  track.appendChild(strip);
+  track.appendChild(strip.cloneNode(true));
+})();
+
+/* set-type tabs */
+(function(){
+  var tabs = document.querySelectorAll(".tab");
+  var panes = document.querySelectorAll(".setpanes > [data-pane]");
+  tabs.forEach(function(t){
+    t.addEventListener("click", function(){
+      tabs.forEach(function(x){ x.setAttribute("aria-selected", String(x === t)); });
+      panes.forEach(function(p){ p.hidden = p.dataset.pane !== t.dataset.pane; });
+    });
+  });
+})();
+
+/* sticky nav + scroll spy */
+(function(){
+  var nav = document.getElementById("nav");
+  var links = Array.prototype.slice.call(document.querySelectorAll(".nav a.lnk"));
+  var ids = links.map(function(a){ return a.getAttribute("href").slice(1); });
+  function onScroll(){
+    nav.classList.toggle("solid", window.scrollY > 40);
+    var current = null;
+    ids.forEach(function(id){
+      var el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top < 240) current = id;
+    });
+    links.forEach(function(a){
+      a.setAttribute("aria-current", String(a.getAttribute("href") === "#" + current));
+    });
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+})();
+
+/* booking form — replace with a real POST endpoint (see HANDOFF.md) */
+(function(){
+  var form = document.getElementById("bookform");
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    form.hidden = true;
+    document.getElementById("sentmsg").hidden = false;
+  });
+})();
+</script>
+</body></html>

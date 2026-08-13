@@ -1,0 +1,17 @@
+/* Minimal element defaults so any surface inherits the instrument-cluster ground. */
+body{background:var(--surface-page);color:var(--text-body);font-family:var(--font-mono);font-size:var(--mono-body-size);line-height:var(--mono-body-lh);-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:var(--weight-bold);color:var(--text-strong);margin:0}
+h1{font-size:var(--display-xl-size);line-height:var(--display-xl-lh);letter-spacing:var(--display-xl-ls)}
+h2{font-size:var(--display-l-size);line-height:var(--display-l-lh);letter-spacing:var(--display-l-ls)}
+h3{font-size:var(--heading-m-size);line-height:var(--heading-m-lh);letter-spacing:var(--heading-m-ls)}
+p{margin:0 0 var(--space-4);max-width:var(--measure);text-wrap:pretty}
+a{color:var(--text-accent);text-decoration:none;border-bottom:1px solid var(--signal-a24);transition:color var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard),text-shadow var(--dur-fast) var(--ease-standard)}
+a:hover{color:var(--accent-active);border-bottom-color:var(--accent-active);text-shadow:var(--glow-text)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+::selection{background:var(--lyte-signal);color:var(--lyte-black)}
+.lyte-label{font-family:var(--font-mono);font-size:var(--mono-label-size);letter-spacing:var(--mono-label-ls);text-transform:uppercase;color:var(--text-muted)}
+.lyte-readout{font-family:var(--font-readout);font-size:var(--readout-size);letter-spacing:var(--readout-ls);line-height:var(--readout-lh);color:var(--accent-primary)}
+.lyte-quote{font-family:var(--font-editorial);font-style:italic;font-weight:300;font-size:var(--editorial-quote-size);line-height:var(--editorial-quote-lh);color:var(--text-strong)}
+.lyte-grid-bg{background-image:var(--texture-grid);background-size:var(--grid-size) var(--grid-size)}
+.lyte-scanlines{position:relative}
+.lyte-scanlines::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:var(--texture-scanlines);background-size:auto 4px;opacity:.5}

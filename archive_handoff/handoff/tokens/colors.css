@@ -1,0 +1,56 @@
+/* LYTE / Color — "Instrument Cluster". Dark-first; light surfaces are the exception. */
+:root{
+  /* base ramp */
+  --lyte-black:#06070A;
+  --lyte-panel:#0C1210;
+  --lyte-carbon:#12191A;
+  --lyte-grid:#123A2A;
+  --lyte-signal:#35FF9E;
+  --lyte-phosphor:#8CFF5A;
+  --lyte-teal:#22E6C8;
+  --lyte-amber:#FFB020;
+  --lyte-redline:#FF3B30;
+  --lyte-screen:#CDE9D8;
+  --lyte-stone:#6C7A70;
+  --lyte-bone:#F2EFE6; /* inherited from SOL3CTA — rare light surfaces only */
+
+  /* semantic surfaces */
+  --surface-page:var(--lyte-black);
+  --surface-panel:var(--lyte-panel);
+  --surface-card:var(--lyte-carbon);
+  --surface-inset:#0A0F0E;
+  --surface-invert:var(--lyte-bone);
+
+  /* semantic text */
+  --text-body:var(--lyte-screen);
+  --text-strong:#EAF7EF;
+  --text-muted:var(--lyte-stone);
+  --text-accent:var(--lyte-signal);
+  --text-on-signal:var(--lyte-black);
+  --text-on-invert:var(--lyte-black);
+
+  /* lines */
+  --border-hairline:var(--lyte-grid);
+  --border-strong:#1C5540;
+  --border-accent:var(--lyte-signal);
+  --border-focus:var(--lyte-phosphor);
+
+  /* accents / states */
+  --accent-primary:var(--lyte-signal);
+  --accent-active:var(--lyte-phosphor);
+  --accent-data:var(--lyte-teal);
+  --accent-warm:var(--lyte-amber);
+  --accent-alert:var(--lyte-redline);
+
+  /* status lights (instrument lamps) */
+  --status-on:var(--lyte-signal);
+  --status-standby:var(--lyte-amber);
+  --status-fault:var(--lyte-redline);
+  --status-off:#20302A;
+
+  /* alpha utilities */
+  --signal-a12:rgba(53,255,158,.12);
+  --signal-a24:rgba(53,255,158,.24);
+  --signal-a60:rgba(53,255,158,.60);
+  --black-a60:rgba(6,7,10,.60);
+}
