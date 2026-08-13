@@ -1,6 +1,6 @@
 const SHOWS = [
   { status: "st-on", date: "08.29.26", city: "Black Rock City", venue: "DeMentha // Burning Man", act: "Booked" },
-  { status: "st-standby", date: "09.12.26", city: "Sevilla", venue: "Glitteratti // Noche de Setas", act: "Holding" },
+  { status: "st-on", date: "09.17.26", city: "Sevilla", venue: "YonkoStyle in Sevilla, Spain", act: "Booked" },
   { status: "st-off", date: "08.28.25", city: "Black Rock City", venue: "DeMentha takeover // Axolotl", act: "" },
   { status: "st-off", date: "07.05.25", city: "Sevilla", venue: "Noche de Setas 7", act: "" },
   { status: "st-off", date: "08.29.24", city: "Black Rock City", venue: "DeMentha // Thursday opening", act: "" },
