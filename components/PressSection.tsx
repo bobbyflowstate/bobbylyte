@@ -54,9 +54,9 @@ export default function PressSection() {
             <h4 style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: "16px", color: "var(--text-strong)", margin: "var(--space-3) 0 var(--space-2)" }}>
               Live clips
             </h4>
-            <span className="lbl">YouTube — night set, Sevilla</span>
+            <span className="lbl">YouTube — live DJ clips playlist</span>
             <div style={{ marginTop: "var(--space-4)" }}>
-              <a className="btn btn-ghost btn-sm" href="https://www.youtube.com/watch?v=j__KGVRYHHY" target="_blank" rel="noopener noreferrer">
+              <a className="btn btn-ghost btn-sm" href="https://www.youtube.com/watch?v=j__KGVRYHHY&list=PLTM3q9rUOOpc" target="_blank" rel="noopener noreferrer">
                 Watch
               </a>
             </div>
