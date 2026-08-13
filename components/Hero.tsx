@@ -19,7 +19,7 @@ export default function Hero() {
             LYTE
           </h1>
           <p className="lead">
-            Day sets that open a room, night sets that hold it, and a live set of all original music.
+            Versatile sets crafted for the floor — from opening warm-ups to peak-hour rooms.
           </p>
           <div className="chips" style={{ margin: "var(--space-6) 0" }}>
             <span className="chip chip-signal">

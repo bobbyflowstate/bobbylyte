@@ -17,7 +17,7 @@ export default function SignalSection() {
               A regular at DeMentha / Burning Man and across the Seville underground, he's the founder of Flow State Radio and the first DJ of SOL3CTA.
             </p>
             <p className="quote" style={{ marginTop: "var(--space-6)" }}>
-              The low-end finds you before the lights do.
+              Reading the room, setting the pace, and taking the floor where it needs to go.
             </p>
           </div>
           <div style={{ display: "grid", gap: "var(--space-4)" }}>
@@ -34,32 +34,35 @@ export default function SignalSection() {
                 <span className="lbl">hi-res press photo — awaiting supply</span>
               </div>
             </div>
-            <div className="panel">
-              <span className="lbl lbl-signal">// stats</span>
-              <div style={{ display: "grid", gap: "var(--space-4)", marginTop: "var(--space-4)" }}>
-                <div className="statrow">
-                  <span className="lbl">instagram</span>
-                  <span>
-                    <span className="statval">1K+</span> <span className="lbl">followers</span>
-                  </span>
-                </div>
-                <div className="statrow">
-                  <span className="lbl">youtube</span>
-                  <span>
-                    <span className="statval">2K+</span> <span className="lbl">subscribers</span>
-                  </span>
-                </div>
-                <div className="statrow">
-                  <span className="lbl">soundcloud</span>
-                  <span>
-                    <span className="statval" style={{ color: "var(--text-muted)" }}>
-                      —
-                    </span>{" "}
-                    <span className="lbl">stats pending</span>
-                  </span>
+            {/* Stats section hidden for now - easily revived when stats increase */}
+            {false && (
+              <div className="panel">
+                <span className="lbl lbl-signal">// stats</span>
+                <div style={{ display: "grid", gap: "var(--space-4)", marginTop: "var(--space-4)" }}>
+                  <div className="statrow">
+                    <span className="lbl">instagram</span>
+                    <span>
+                      <span className="statval">1K+</span> <span className="lbl">followers</span>
+                    </span>
+                  </div>
+                  <div className="statrow">
+                    <span className="lbl">youtube</span>
+                    <span>
+                      <span className="statval">2K+</span> <span className="lbl">subscribers</span>
+                    </span>
+                  </div>
+                  <div className="statrow">
+                    <span className="lbl">soundcloud</span>
+                    <span>
+                      <span className="statval" style={{ color: "var(--text-muted)" }}>
+                        —
+                      </span>{" "}
+                      <span className="lbl">stats pending</span>
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
