@@ -41,11 +41,11 @@ export default function PressSection() {
             <h4 style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: "16px", color: "var(--text-strong)", margin: "var(--space-3) 0 var(--space-2)" }}>
               Press photos
             </h4>
-            <span className="lbl">Hi-res, awaiting supply</span>
+            <span className="lbl">Hi-res photo pack (5 shots) — ZIP</span>
             <div style={{ marginTop: "var(--space-4)" }}>
-              <button className="btn btn-ghost btn-sm" disabled>
-                Pending
-              </button>
+              <a className="btn btn-ghost btn-sm" href="/assets/bobby-lyte-press-photos.zip" download>
+                Download ZIP
+              </a>
             </div>
           </div>
 

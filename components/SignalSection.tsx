@@ -23,15 +23,13 @@ export default function SignalSection() {
           <div style={{ display: "grid", gap: "var(--space-4)" }}>
             <div className="panel panel-dark">
               <span className="lbl lbl-signal">// press photo</span>
-              <div className="photoslot" style={{ marginTop: "var(--space-4)" }}>
+              <div style={{ marginTop: "var(--space-4)", borderRadius: "var(--radius-sm)", overflow: "hidden", border: "1px solid var(--border-hairline)", boxShadow: "var(--inset-screen)" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/assets/mark-signal-ball-line.svg"
-                  height="64"
-                  alt=""
-                  style={{ color: "var(--border-strong)" }}
+                  src="/assets/bobby-lyte-signal.jpg"
+                  alt="Bobby Lyte behind the decks"
+                  style={{ width: "100%", height: "auto", display: "block", objectFit: "cover", filter: "brightness(1.25) contrast(1.1)" }}
                 />
-                <span className="lbl">hi-res press photo — awaiting supply</span>
               </div>
             </div>
             {/* Stats section hidden for now - easily revived when stats increase */}
