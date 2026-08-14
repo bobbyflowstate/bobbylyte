@@ -61,7 +61,7 @@ export default function SetsSection() {
                 </div>
                 <div className="well">
                   <iframe
-                    height="200"
+                    height="140"
                     loading="lazy"
                     src="https://www.youtube-nocookie.com/embed/j__KGVRYHHY"
                     title="Techno, Indie Dance — Sevilla"
@@ -113,7 +113,7 @@ export default function SetsSection() {
             </p>
             <div className="setgrid">
               <article className="embed">
-                <h4>Indie dance, funk &amp; tech house — Burning Man</h4>
+                <h4>Indie dance &amp; tech house — Burning Man</h4>
                 <span className="lbl">DeMentha // Thu 1PM opening 2024</span>
                 <div className="chips">
                   <span className="chip">Indie Dance</span>
