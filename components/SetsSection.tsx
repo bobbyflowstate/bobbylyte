@@ -48,8 +48,14 @@ export default function SetsSection() {
         <div className="setpanes">
           {/* Night Sets Pane */}
           <div data-pane="night" hidden={activePane !== "night"}>
-            <p style={{ color: "var(--text-body)", margin: "0 0 var(--space-5)" }}>
-              Driving, deep, momentum-building — for peak-time and after-dark rooms.
+            <p
+              style={{
+                color: "var(--text-body)",
+                margin: "0 0 var(--space-5)",
+              }}
+            >
+              Driving, deep, momentum-building — for peak-time and after-dark
+              rooms.
             </p>
             <div className="setgrid">
               <article className="embed">
@@ -108,8 +114,14 @@ export default function SetsSection() {
 
           {/* Day Sets Pane */}
           <div data-pane="day" hidden={activePane !== "day"}>
-            <p style={{ color: "var(--text-body)", margin: "0 0 var(--space-5)" }}>
-              Groove-forward, melodic, room-opening & energetic — for daytime, sunset, and warm-up slots.
+            <p
+              style={{
+                color: "var(--text-body)",
+                margin: "0 0 var(--space-5)",
+              }}
+            >
+              Groove-forward, melodic, room-opening & energetic — for daytime,
+              sunset, and warm-up slots.
             </p>
             <div className="setgrid">
               <article className="embed">
@@ -167,10 +179,17 @@ export default function SetsSection() {
 
           {/* Live Set Pane */}
           <div data-pane="live" hidden={activePane !== "live"}>
-            <p style={{ color: "var(--text-body)", margin: "0 0 var(--space-5)" }}>
-              A performance of entirely original music performed live with MIDI controllers, Synthesizers, mixers and more. Day or night time - you pick.
+            <p
+              style={{
+                color: "var(--text-body)",
+                margin: "0 0 var(--space-5)",
+              }}
+            >
+              A performance of entirely original music performed live with MIDI
+              controllers, Synthesizers, mixers and more. Day or night time -
+              you pick.
             </p>
-            <div className="setgrid" style={{ gridTemplateColumns: "minmax(0,1fr)" }}>
+            <div className="setgrid">
               <article className="embed">
                 <h4>Live set for a late night rave - Sevilla Spain</h4>
                 <span className="lbl">all original production</span>
@@ -184,6 +203,26 @@ export default function SetsSection() {
                     loading="lazy"
                     src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fbobbyflowstate%2Fa-melody-has-written-it&color=%2335FF9E&inverse=true&auto_play=false&show_user=true"
                     title="A Melody Has Written It"
+                  />
+                </div>
+              </article>
+
+              <article className="embed">
+                <h4>
+                  Funk, groove, afro and acid synths for a daytime rager -
+                  DeMentha, Burning Man
+                </h4>
+                <span className="lbl">all original production</span>
+                <div className="chips">
+                  <span className="chip">Afro House</span>
+                  <span className="chip">Acid / Funk</span>
+                </div>
+                <div className="well">
+                  <iframe
+                    height="140"
+                    loading="lazy"
+                    src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fbobbyflowstate%2Flive-set-at-burning-man-2026&color=%2335FF9E&inverse=true&auto_play=false&show_user=true"
+                    title="Funk, afro and acid synths for a daytime rager - DeMentha, Burning Man"
                   />
                 </div>
               </article>

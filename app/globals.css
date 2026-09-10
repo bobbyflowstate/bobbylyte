@@ -705,6 +705,7 @@ section {
   box-shadow: var(--inset-screen);
   border-radius: var(--radius-sm);
   overflow: hidden;
+  margin-top: auto;
 }
 
 .embed iframe {
